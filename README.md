@@ -10,11 +10,13 @@ Agents pay for services directly from their wallet — no accounts, no subscript
 |---|---|---|
 | Lightning (Bitcoin) | ✅ Live | sats |
 | Arbitrum Sepolia (testnet) | ✅ Deployed | ETH |
-| Arbitrum One (mainnet) | 🔜 Soon | ETH/USDC |
+| Arbitrum One (mainnet) | ✅ Live | ETH |
 
-## Contract — Arbitrum Sepolia
+## Contract — Arbitrum One (mainnet) & Sepolia (testnet)
 
 `0xD467CD1e34515d58F98f8Eb66C0892643ec86AD3`
+
+Same address on both networks.
 
 ## Services & Prices
 

@@ -4,7 +4,7 @@ Módulo compartido — verificación de pagos en Arbitrum para Giskard MCP serve
 import os
 from web3 import Web3
 
-ARBITRUM_RPC      = os.getenv("ARBITRUM_RPC", "https://sepolia-rollup.arbitrum.io/rpc")
+ARBITRUM_RPC      = os.getenv("ARBITRUM_RPC", "https://arb1.arbitrum.io/rpc")
 CONTRACT_ADDRESS  = os.getenv("GISKARD_CONTRACT_ADDRESS", "0xD467CD1e34515d58F98f8Eb66C0892643ec86AD3")
 OWNER_PRIVATE_KEY = os.getenv("OWNER_PRIVATE_KEY", "")
 
@@ -67,7 +67,7 @@ def get_invoice_info(service: str) -> dict:
     """Retorna los datos para que el agente pague on-chain."""
     sid   = SERVICE_IDS.get(service)
     price = SERVICE_PRICES.get(service, 0)
-    chain = "arbitrum-sepolia" if "sepolia" in ARBITRUM_RPC else "arbitrum-one"
+    chain = "arbitrum-one" if "sepolia" in ARBITRUM_RPC else "arbitrum-one"
     return {
         "network":      chain,
         "contract":     CONTRACT_ADDRESS,
