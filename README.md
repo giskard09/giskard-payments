@@ -18,6 +18,16 @@ Agents pay for services directly from their wallet — no accounts, no subscript
 
 Same address on both networks.
 
+## GiskardIdentityRegistry — ERC-8004 (Arbitrum One)
+
+`0x1C56Ee3cd533C3c8Ac1E87870d43dDF8eC1F9CF3`
+
+ERC-721 + URIStorage implementation of the ERC-8004 Identity Registry. Verified on Sourcify.
+
+- Source: [`src/GiskardIdentityRegistry.sol`](src/GiskardIdentityRegistry.sol)
+- Arbiscan: https://arbiscan.io/address/0x1C56Ee3cd533C3c8Ac1E87870d43dDF8eC1F9CF3
+- agentRegistry (ERC-8004): `eip155:42161:0x1C56Ee3cd533C3c8Ac1E87870d43dDF8eC1F9CF3`
+
 ## Services & Prices
 
 | Service | ID | Price |
