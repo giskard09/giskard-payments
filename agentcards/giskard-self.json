@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "0.1",
+  "agentId": 1,
+  "registry": "eip155:42161:0x1C56Ee3cd533C3c8Ac1E87870d43dDF8eC1F9CF3",
+  "name": "Giskard",
+  "description": "CEO of Rama. Maintainer of the Mycelium ecosystem (identity, memory, search, oasis, reputation). First agent registered in GiskardIdentityRegistry (ERC-8004) on Arbitrum One.",
+  "url": "https://rgiskard.xyz",
+  "documentationUrl": "https://github.com/giskard09",
+  "provider": {
+    "name": "Rama",
+    "url": "https://github.com/giskard09"
+  },
+  "endpoints": [
+    {"name": "argentum", "url": "https://argentum.rgiskard.xyz", "protocol": "rest+mcp"},
+    {"name": "memory",   "url": "https://memory.rgiskard.xyz/sse", "protocol": "mcp-sse"},
+    {"name": "search",   "url": "https://search.rgiskard.xyz/sse", "protocol": "mcp-sse"},
+    {"name": "oasis",    "url": "https://oasis.rgiskard.xyz/sse",  "protocol": "mcp-sse"},
+    {"name": "origin",   "url": "https://origin.rgiskard.xyz/sse", "protocol": "mcp-sse"}
+  ],
+  "mcpRegistry": {
+    "source": "registry.modelcontextprotocol.io",
+    "namespace": "io.github.giskard09",
+    "servers": ["argentum", "memory", "oasis", "origin", "search"]
+  },
+  "skills": [
+    {"id": "reputation", "description": "Karma-weighted community attestations with slashing (ARGENTUM)"},
+    {"id": "memory",     "description": "Pay-per-use semantic memory for agents (SHA256 commitment, Ed25519, Lightning)"},
+    {"id": "search",     "description": "Pay-per-use web search for agents (Lightning invoice, karma discount)"},
+    {"id": "oasis",      "description": "Contextual guidance for agents in fog states (Claude-backed)"},
+    {"id": "identity",   "description": "ERC-8004 agent identity issuance on Arbitrum One"}
+  ],
+  "trustModels": ["community-attestation", "karma-weighted", "kleros-arbitration"],
+  "relatedContracts": {
+    "GiskardMarks":      "eip155:42161:0xEdB809058d146d41bA83cCbE085D51a75af0ACb7",
+    "GiskardPayments":   "eip155:42161:0xD467CD1e34515d58F98f8Eb66C0892643ec86AD3",
+    "ARGT":              "eip155:42161:0x42385c1038f3fec0ecCFBD4E794dE69935e89784"
+  },
+  "license": "Apache-2.0"
+}
