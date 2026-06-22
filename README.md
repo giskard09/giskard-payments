@@ -12,11 +12,13 @@ Agents pay for services directly from their wallet — no accounts, no subscript
 | Arbitrum Sepolia (testnet) | ✅ Deployed | ETH |
 | Arbitrum One (mainnet) | ✅ Live | ETH |
 
-## Contract — Arbitrum One (mainnet) & Sepolia (testnet)
+## Contract — GiskardPayments
 
-`0xD467CD1e34515d58F98f8Eb66C0892643ec86AD3`
-
-Same address on both networks.
+| Network | Address | Status |
+|---|---|---|
+| Arbitrum One (mainnet) | `0xe40E376cD32b03E3084F9E0d646155D0Ba0A63ae` | v2 — current (facilitator whitelist, deployed 2026-06-10) |
+| Base (mainnet) | `0x90Fa32a9568c6aE6BEa915DF8737acfd7EEA97De` | current (deployed 2026-06-22) |
+| Arbitrum (v1) | `0xD467CD1e34515d58F98f8Eb66C0892643ec86AD3` | deprecated — superseded by v2 |
 
 ## GiskardIdentityRegistry — ERC-8004 (Arbitrum One)
 
