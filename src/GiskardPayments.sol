@@ -22,6 +22,9 @@ contract GiskardPayments {
     // payment_id => used
     mapping(bytes32 => bool) public used;
 
+    // Addresses authorized to call markUsed (integrators, backend nodes)
+    mapping(address => bool) public facilitators;
+
     event PaymentReceived(
         bytes32 indexed paymentId,
         address indexed payer,
@@ -31,9 +34,15 @@ contract GiskardPayments {
 
     event PriceUpdated(uint8 service, uint256 newPrice);
     event Withdrawn(address to, uint256 amount);
+    event FacilitatorSet(address indexed facilitator, bool authorized);
 
     modifier onlyOwner() {
         require(msg.sender == owner, "not owner");
+        _;
+    }
+
+    modifier onlyAuthorized() {
+        require(msg.sender == owner || facilitators[msg.sender], "not authorized");
         _;
     }
 
@@ -62,10 +71,18 @@ contract GiskardPayments {
     }
 
     /**
-     * @notice Mark a payment ID as used (called by backend after serving the request).
+     * @notice Mark a payment ID as used (called by backend or authorized facilitator).
      */
-    function markUsed(bytes32 paymentId) external onlyOwner {
+    function markUsed(bytes32 paymentId) external onlyAuthorized {
         used[paymentId] = true;
+    }
+
+    /**
+     * @notice Add or remove an authorized facilitator (e.g. integrator backend).
+     */
+    function setFacilitator(address facilitator, bool authorized) external onlyOwner {
+        facilitators[facilitator] = authorized;
+        emit FacilitatorSet(facilitator, authorized);
     }
 
     /**

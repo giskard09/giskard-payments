@@ -90,10 +90,24 @@ class ArbitrumPayments:
         else:
             self.contract = None
 
-        self.owner_key = owner_key
-        self.owner_address = (
-            self.w3.eth.account.from_key(owner_key).address if owner_key else None
-        )
+        self.use_signer = os.getenv("USE_SIGNER", "0") == "1"
+        self.signer_wallet_id = os.getenv("SIGNER_WALLET_ID", "owner")
+        self.signer_chain_id = int(os.getenv("SIGNER_CHAIN_ID", "421614" if self.testnet else "42161"))
+        self.signer_client = None
+
+        if self.use_signer:
+            import sys
+            if "/home/dell7568/giskard-signer" not in sys.path:
+                sys.path.insert(0, "/home/dell7568/giskard-signer")
+            from signer.client import SignerClient
+            self.signer_client = SignerClient.from_env()
+            self.owner_key = None
+            self.owner_address = self.signer_client.get_address(self.signer_wallet_id)
+        else:
+            self.owner_key = owner_key
+            self.owner_address = (
+                self.w3.eth.account.from_key(owner_key).address if owner_key else None
+            )
 
     def get_invoice(self, service: str) -> dict:
         """Devuelve los datos para que el agente pague on-chain."""
@@ -144,7 +158,9 @@ class ArbitrumPayments:
 
     def mark_used(self, payment_id: bytes):
         """Marca el payment_id como usado en el contrato."""
-        if not self.contract or not self.owner_key:
+        if not self.contract or not self.owner_address:
+            return
+        if not self.use_signer and not self.owner_key:
             return
 
         tx = self.contract.functions.markUsed(payment_id).build_transaction({
@@ -152,5 +168,14 @@ class ArbitrumPayments:
             "nonce": self.w3.eth.get_transaction_count(self.owner_address),
             "gas":   100_000,
         })
-        signed = self.w3.eth.account.sign_transaction(tx, self.owner_key)
-        self.w3.eth.send_raw_transaction(signed.raw_transaction)
+        if self.use_signer:
+            tx.setdefault("chainId", self.signer_chain_id)
+            if "gasPrice" not in tx and "maxFeePerGas" not in tx:
+                tx["gasPrice"] = self.w3.eth.gas_price
+            raw_hex = self.signer_client.sign_transaction(self.signer_wallet_id, tx)["raw_transaction"]
+            if raw_hex.startswith("0x"):
+                raw_hex = raw_hex[2:]
+            self.w3.eth.send_raw_transaction(bytes.fromhex(raw_hex))
+        else:
+            signed = self.w3.eth.account.sign_transaction(tx, self.owner_key)
+            self.w3.eth.send_raw_transaction(signed.raw_transaction)

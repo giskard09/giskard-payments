@@ -35,7 +35,7 @@
   },
   "relatedContracts": {
     "GiskardMarks":      "eip155:42161:0xEdB809058d146d41bA83cCbE085D51a75af0ACb7",
-    "GiskardPayments":   "eip155:42161:0xD467CD1e34515d58F98f8Eb66C0892643ec86AD3",
+    "GiskardPayments":   "eip155:42161:0xe40E376cD32b03E3084F9E0d646155D0Ba0A63ae",
     "ARGT":              "eip155:42161:0x42385c1038f3fec0ecCFBD4E794dE69935e89784",
     "GiskardIdentityRegistry": "eip155:42161:0x1C56Ee3cd533C3c8Ac1E87870d43dDF8eC1F9CF3",
     "GiskardReputationRegistry_Sepolia": "eip155:421614:0xF8082A59298921540B380cecFd455510FaF22858"
