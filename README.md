@@ -20,6 +20,23 @@ Agents pay for services directly from their wallet — no accounts, no subscript
 | Base (mainnet) | `0x90Fa32a9568c6aE6BEa915DF8737acfd7EEA97De` | current (deployed 2026-06-22) |
 | Arbitrum (v1) | `0xD467CD1e34515d58F98f8Eb66C0892643ec86AD3` | deprecated — superseded by v2 |
 
+## Contract — AnchorRegistry
+
+Permissionless on-chain anchoring primitive for Mycelium references
+(`counterparty_ref`, `negotiation_ref`, …). `anchor(bytes32)` emits an
+`Anchored(bytes32 indexed ref, address indexed anchoredBy, uint256 timestamp)` event —
+no owner, no funds, no roles. Deployed at a single canonical address across all chains
+via CREATE2 (salt `keccak256("mycelium.anchor.registry.v1")`).
+
+| Network | Chain ID | Address |
+|---|---|---|
+| Arbitrum One (mainnet) | 42161 | `0x49fEcA52bC634a9Ab773226D16619deC547794aa` |
+| Base (mainnet) | 8453 | `0x49fEcA52bC634a9Ab773226D16619deC547794aa` |
+
+- Source: [`src/AnchorRegistry.sol`](src/AnchorRegistry.sol)
+- Deploy tx (Base): `0x8810f63fe26e300b344b62526b7844a0ed1418c56c844be6f73e897519efdf07`
+- Deploy tx (Arbitrum One): `0x05f466aa364bdd0a28231f43af95a82122a567211163c9b00a49ca2ddcbb7d40`
+
 ## GiskardIdentityRegistry — ERC-8004 (Arbitrum One)
 
 `0x1C56Ee3cd533C3c8Ac1E87870d43dDF8eC1F9CF3`
