@@ -32,10 +32,12 @@ via CREATE2 (salt `keccak256("mycelium.anchor.registry.v1")`).
 |---|---|---|
 | Arbitrum One (mainnet) | 42161 | `0x49fEcA52bC634a9Ab773226D16619deC547794aa` |
 | Base (mainnet) | 8453 | `0x49fEcA52bC634a9Ab773226D16619deC547794aa` |
+| Ink (mainnet) | 57073 | `0x49fEcA52bC634a9Ab773226D16619deC547794aa` |
 
 - Source: [`src/AnchorRegistry.sol`](src/AnchorRegistry.sol)
 - Deploy tx (Base): `0x8810f63fe26e300b344b62526b7844a0ed1418c56c844be6f73e897519efdf07`
 - Deploy tx (Arbitrum One): `0x05f466aa364bdd0a28231f43af95a82122a567211163c9b00a49ca2ddcbb7d40`
+- Deploy tx (Ink): `0xcbd2d137e14287a13168eb14a75d4cad44456d94a78946ef72170d3f3723a895` — source verified on [Ink explorer](https://explorer.inkonchain.com/address/0x49fEcA52bC634a9Ab773226D16619deC547794aa)
 
 ## GiskardIdentityRegistry — ERC-8004 (Arbitrum One)
 
