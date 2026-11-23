@@ -78,3 +78,7 @@ forge script script/Deploy.s.sol:Deploy --rpc-url $ARBITRUM_RPC --private-key $O
 - [giskard-search](https://github.com/giskard09/giskard-search)
 - [giskard-memory](https://github.com/giskard09/giskard-memory)
 - [giskard-oasis](https://github.com/giskard09/giskard-oasis)
+
+## License
+
+Apache-2.0 (see `LICENSE`) unless a file says otherwise: each source file declares its license in its SPDX header. Files declared MIT (including the deployed `AnchorRegistry.sol` and `GiskardPayments.sol`) are covered by `LICENSES/MIT.txt`. `lib/` holds third-party submodules under their own licenses.
